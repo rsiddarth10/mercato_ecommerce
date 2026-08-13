@@ -1,7 +1,5 @@
 const { makePayment } = require("../controllers/payment.controller");
-
 const router = require("express").Router();
-
-router.route("/").post(makePayment);
-
+const verifyToken = require("../middleware/verifyToken");
+router.route("/").post(verifyToken, makePayment);
 module.exports = router;
